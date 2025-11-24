@@ -8,13 +8,49 @@ T-Air adalah jaringan DePIN berbasis komunitas yang memanfaatkan sensor murah (E
 
 ## Arsitektur Sederhana
 
-**Device (DeIoT)**: ESP32 + Sensor MQ-135 mengirim data kualitas udara ke Cloud.
+```mermaid
+graph TD
+    %% Styling
+    classDef hardware fill:#f96,stroke:#333,stroke-width:2px;
+    classDef server fill:#61dafb,stroke:#333,stroke-width:2px;
+    classDef blockchain fill:#0098ea,stroke:#333,stroke-width:2px,color:white;
 
-**Bridge (Backend)**: Serverless API (Vercel) memvalidasi data & menyimpannya di MongoDB.
+    subgraph "1. Device Layer (DeIoT)"
+        A["📡 ESP32 + MQ-135"]:::hardware
+    end
 
-**Blockchain (TON)**: Smart Contract (Tact) mencatat kontribusi dan mendistribusikan reward token.
+    subgraph "2. Bridge Layer (Backend)"
+        B("☁️ Vercel Serverless API"):::server
+        C[("🗄️ MongoDB Atlas")]:::server
+    end
 
-**Interface**: Telegram Mini App untuk visualisasi data dan klaim reward.
+    subgraph "3. User Interface Layer"
+        D["📱 Telegram Mini App"]:::server
+        U["👤 User / Warga"]
+    end
+
+    subgraph "4. Blockchain Layer (TON)"
+        E["💎 Smart Contract (Tact)"]:::blockchain
+        F["💰 User Wallet (Tonkeeper)"]:::blockchain
+    end
+
+    %% Alur Data
+    A -->|1. Kirim Data Kualitas Udara| B
+    B -->|2. Validasi & Simpan Log| C
+    U -->|3. Buka Dashboard & Monitoring| D
+    D -->|4. Request Data Real-time| B
+    D -->|5. Klik 'Claim Reward'| E
+    E -->|6. Distribusi Token $TAIR| F
+```
+
+### Penjelasan Singkat Alur Diagram:
+
+1.  **Device Layer:** Sensor ESP32 membaca polusi dan mengirim data mentah ke cloud.
+2.  **Bridge Layer:** Vercel menerima data, memastikan data valid (bukan spam), lalu menyimpannya di MongoDB agar akses cepat dan murah.
+3.  **UI Layer:** Pengguna melihat grafik udara lewat Telegram Mini App yang mengambil data dari Vercel.
+4.  **Blockchain Layer:** Saat pengguna mengklaim reward, Mini App berinteraksi dengan **Smart Contract TON** untuk mengirim token ke Wallet pengguna.
+
+
 
 ## Komponen DePIN & TON
 

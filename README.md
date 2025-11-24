@@ -68,6 +68,40 @@ cd frontend && npm run dev
 - **Sensor**: MQ-135 (Air Quality)
 - **Communication**: HTTPS/JSON
 
+### 🏗️ Arsitektur Sistem (Hybrid DePIN)
+
+Sistem T-Air menggunakan pendekatan **Hybrid (Off-chain + On-chain)** untuk efisiensi biaya dan kecepatan data real-time.
+
+1.  **Off-chain Layer (Data & IoT):**
+    * **Perangkat:** Sensor ESP32 mengirim data kualitas udara setiap 5 menit via HTTPS.
+    * **Backend:** Serverless API (Vercel) memvalidasi data dan menyimpannya di database MongoDB.
+    * **Telegram UI:** Bot Telegram menampilkan data real-time kepada pengguna.
+
+2.  **On-chain Layer (Incentive & Trust):**
+    * **Settlement:** Poin yang terkumpul di database dikonversi menjadi Token $TAIR di jaringan **TON Blockchain**.
+    * **Smart Contract:** Mencatat transaksi reward dan kepemilikan sensor secara transparan.
+
+## 🏗️ Arsitektur Sistem
+
+Berikut adalah alur data hybrid (Off-chain dan On-chain) yang digunakan dalam T-Air:
+
+```mermaid
+flowchart TD
+    subgraph "OFF-CHAIN (IoT & Server)"
+        A[📡 ESP32 Sensor] -->|1. Kirim Data/JSON| B(⚡ Vercel Backend)
+        B -->|2. Validasi & Simpan| C[(🗄️ MongoDB Atlas)]
+        D[📱 User Telegram] -->|3. Lihat Dashboard| B
+    end
+
+    subgraph "ON-CHAIN (TON Network)"
+        D -->|4. Klik 'Claim Reward'| E{💎 Smart Contract}
+        E -->|5. Mint Token $TAIR| F[💰 User Wallet]
+    end
+```
+
+**Alur Data:**
+`Sensor (ESP32)` ➡️ `Vercel API` ➡️ `MongoDB` ➡️ `User Claim` ➡️ `TON Blockchain`
+
 ## 📁 Struktur Project
 ```
 t-air-clean/
