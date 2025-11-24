@@ -10,7 +10,7 @@ DeIoT / Sensors
 
 ### 1. Clone Repo:
 ```bash
-git clone <URL_REPO_ANDA>
+git clone https://github.com/pratama404/tair.git
 cd t-air-clean
 ```
 
@@ -182,9 +182,7 @@ node test-smart-contract.js
 3. Flash firmware ke ESP32
 
 ## 👥 Tim
-- [Nama Anda] - Fullstack & Blockchain Developer
-- [Nama Tim 2] - IoT Engineer  
-- [Nama Tim 3] - UI/UX Designer
+- [Ageng Putra Pratama] - Fullstack 
 
 ## 📄 License
 MIT
