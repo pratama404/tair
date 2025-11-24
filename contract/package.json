@@ -1,0 +1,20 @@
+{
+  "name": "t-air-contract",
+  "version": "1.0.0",
+  "description": "T-Air TON Smart Contract",
+  "scripts": {
+    "build": "tact --config tact.config.json",
+    "deploy": "blueprint run deploy",
+    "test": "blueprint test"
+  },
+  "dependencies": {
+    "@ton/core": "^0.56.0",
+    "@ton/crypto": "^3.2.0",
+    "@ton/blueprint": "^0.20.0",
+    "@tact-lang/compiler": "^1.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  }
+}

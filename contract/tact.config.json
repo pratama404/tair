@@ -1,0 +1,9 @@
+{
+  "projects": [
+    {
+      "name": "air_rewards",
+      "path": "./contracts/air_rewards.tact",
+      "output": "./build"
+    }
+  ]
+}

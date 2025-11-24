@@ -1,0 +1,17 @@
+{
+  "name": "t-air",
+  "version": "1.0.0",
+  "description": "## 🌬️ Deskripsi Singkat T-Air mengubah sensor IoT murah menjadi penambang data kualitas udara. Terintegrasi penuh dengan Telegram dan TON Blockchain untuk insentif otomatis.",
+  "main": "simulate-sensor.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.13.2",
+    "mongoose": "^8.20.1",
+    "telegraf": "^4.16.3"
+  }
+}

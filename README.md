@@ -1,0 +1,193 @@
+# T-Air: Decentralized Air Quality Monitoring on TON
+
+## 🌬️ Deskripsi Singkat
+T-Air mengubah sensor IoT murah menjadi penambang data kualitas udara. Terintegrasi penuh dengan Telegram dan TON Blockchain untuk insentif otomatis.
+
+## 📊 Kategori DePIN
+DeIoT / Sensors
+
+## 🚀 5 Langkah Menjalankan (Local Development)
+
+### 1. Clone Repo:
+```bash
+git clone <URL_REPO_ANDA>
+cd t-air-clean
+```
+
+### 2. Install Dependencies:
+```bash
+# Backend
+cd backend && npm install
+
+# Frontend  
+cd ../frontend && npm install
+```
+
+### 3. Konfigurasi Environment:
+- Copy `backend/.env.example` ke `backend/.env`
+- Isi variabel environment:
+  - `MONGODB_URI`: Connection string dari MongoDB Atlas
+  - `BOT_TOKEN`: Token bot dari BotFather Telegram
+  - `MNEMONIC`: Mnemonic phrase wallet TON admin
+
+**⚠️ PENTING: Jangan commit file .env ke GitHub!**
+
+### 4. Jalankan Aplikasi:
+```bash
+# Terminal 1 (Backend)
+cd backend && npm run dev
+
+# Terminal 2 (Frontend)
+cd frontend && npm run dev
+```
+
+### 5. Buka Browser/Telegram:
+- Web Admin: `http://localhost:5173`
+- Telegram Bot: Setup webhook ke backend URL
+
+## 🏗️ Arsitektur & Tech Stack
+
+### Backend
+- **Framework**: Node.js (Serverless Functions)
+- **Database**: MongoDB Atlas
+- **Deployment**: Vercel
+- **Blockchain**: TON SDK
+
+### Frontend
+- **Framework**: React + Vite
+- **UI**: Telegram Mini App SDK
+- **Styling**: CSS dengan Telegram theme variables
+
+### Smart Contract
+- **Language**: Tact
+- **Network**: TON Testnet
+- **Function**: Reward distribution
+
+### Hardware
+- **Platform**: ESP32
+- **Sensor**: MQ-135 (Air Quality)
+- **Communication**: HTTPS/JSON
+
+## 📁 Struktur Project
+```
+t-air-clean/
+├── backend/                  # Vercel API Backend
+│   ├── api/
+│   │   └── index.js          # Main serverless function
+│   ├── .env                  # Environment variables
+│   ├── .env.example          # Environment template
+│   ├── package.json          # Backend dependencies
+│   └── vercel.json           # Vercel config
+├── frontend/                 # React Telegram Mini App
+│   ├── src/
+│   │   ├── App.jsx           # Main component
+│   │   ├── App.css           # Styles
+│   │   ├── index.css         # Global styles
+│   │   └── main.jsx          # Entry point
+│   ├── index.html            # HTML template
+│   ├── package.json          # Frontend dependencies
+│   └── vite.config.js        # Vite config
+├── contract/                 # TON Smart Contract
+│   └── contracts/
+│       └── air_rewards.tact  # Tact contract
+├── firmware/                 # ESP32 Code
+│   └── sensor.ino            # Arduino code
+├── README.md                 # This file
+├── ONEPAGER.md              # Hackathon submission
+└── .gitignore               # Git ignore rules
+```
+
+## 🔌 API Endpoints
+
+### GET /api
+Health check endpoint
+
+### POST /api/submit
+Submit sensor data
+```json
+{
+  "sensorId": "ESP32_01",
+  "aqi": 75
+}
+```
+
+### GET /api/user?telegramId=123
+Get user data and points
+
+### POST /api/claim
+Claim TON rewards
+```json
+{
+  "telegramId": 123456789
+}
+```
+
+### POST /api/connect-sensor
+Connect sensor to user account
+```json
+{
+  "telegramId": 123456789,
+  "sensorId": "ESP32_01"
+}
+```
+
+## 🚀 Deployment
+
+### Backend (Vercel)
+```bash
+cd backend
+vercel --prod
+```
+
+### Frontend (Vercel)
+```bash
+cd frontend
+npm run build
+vercel --prod
+```
+
+### Environment Variables di Vercel
+Set di Vercel Dashboard:
+- `MONGODB_URI`
+- `BOT_TOKEN` 
+- `MNEMONIC`
+
+## 🔗 Production URLs
+- **Backend API:** https://backend-fdhckiobr-pratamas-projects.vercel.app
+- **Frontend App:** https://frontend-oovsyjzt1-pratamas-projects.vercel.app
+- **Smart Contract:** EQD4FPq-PRDieyQKkizFTRtSDyucUIqrj0v_zXJmqaDp6_0t (TON Testnet)
+
+## 🧪 Testing
+
+### Backend API Testing
+```bash
+node test-complete.js
+```
+
+### Smart Contract Testing
+```bash
+node test-smart-contract.js
+```
+
+## 🔧 Hardware Setup
+
+### ESP32 Wiring
+- MQ-135 VCC → 3.3V
+- MQ-135 GND → GND  
+- MQ-135 AOUT → GPIO 34
+
+### Configuration
+1. Update WiFi credentials di `firmware/sensor.ino`
+2. Update server URL ke Vercel deployment
+3. Flash firmware ke ESP32
+
+## 👥 Tim
+- [Nama Anda] - Fullstack & Blockchain Developer
+- [Nama Tim 2] - IoT Engineer  
+- [Nama Tim 3] - UI/UX Designer
+
+## 📄 License
+MIT
+
+## 🏆 Hackathon
+PinGo Indonesian DePIN Hackathon 2025 - TON Track & DePIN Build Track
