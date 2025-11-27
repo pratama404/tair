@@ -1,7 +1,7 @@
-# T-Air: Decentralized Air Quality Monitoring on TON
+# T-Air: Advanced Air Quality Monitoring DePIN
 
 ## 🌬️ Deskripsi Singkat
-T-Air mengubah sensor IoT murah menjadi penambang data kualitas udara. Terintegrasi penuh dengan Telegram dan TON Blockchain untuk insentif otomatis.
+T-Air mengubah sensor MQ-135 menjadi stasiun monitoring kualitas udara yang canggih. Mendeteksi CO, NH3, Alkohol, Asap dengan dashboard real-time dan reward TON blockchain.
 
 ## 📊 Kategori DePIN
 DeIoT / Sensors
@@ -137,11 +137,16 @@ t-air-clean/
 Health check endpoint
 
 ### POST /api/submit
-Submit sensor data
+Submit enhanced sensor data
 ```json
 {
-  "sensorId": "ESP32_01",
-  "aqi": 75
+  "sensorId": "MQ135_01",
+  "aqi": 75,
+  "co": 12,
+  "smoke": 180,
+  "nh3": 8,
+  "alcohol": 15,
+  "timestamp": "2025-01-12T15:30:42Z"
 }
 ```
 
@@ -187,9 +192,18 @@ Set di Vercel Dashboard:
 - `MNEMONIC`
 
 ## 🔗 Production URLs
-- **Backend API:** https://backend-fdhckiobr-pratamas-projects.vercel.app
-- **Frontend App:** https://frontend-oovsyjzt1-pratamas-projects.vercel.app
+- **Backend API:** https://backend-r1t9va2ni-pratamas-projects.vercel.app
+- **Frontend App:** https://frontend-oss0egm96-pratamas-projects.vercel.app
 - **Smart Contract:** EQD4FPq-PRDieyQKkizFTRtSDyucUIqrj0v_zXJmqaDp6_0t (TON Testnet)
+- **Telegram Bot:** @TonairBot
+
+## 🎆 New Features (T-Air v2.0)
+- **Enhanced MQ-135 Monitoring:** CO, NH3, Alcohol, Smoke detection
+- **Real-time Dashboard:** Live charts with glassmorphism design
+- **Smart Alerts:** Automatic warnings for dangerous gas levels
+- **TON Wallet Integration:** Direct testnet wallet connection
+- **Mobile-first UI:** Responsive design with smooth animations
+- **Advanced Analytics:** Historical data tracking and trends
 
 ## 🧪 Testing
 

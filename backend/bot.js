@@ -56,7 +56,7 @@ Start earning by connecting your ESP32 sensor!`;
   ctx.reply(welcomeMsg, {
     reply_markup: {
       inline_keyboard: [[
-        { text: '🚀 Open T-Air App', web_app: { url: 'https://frontend-q3dmnj8zt-pratamas-projects.vercel.app' }}
+        { text: '🚀 Open T-Air App', web_app: { url: 'https://frontend-1qwzkfje3-pratamas-projects.vercel.app' }}
       ]]
     }
   });
@@ -120,7 +120,7 @@ bot.command('app', (ctx) => {
   ctx.reply('🚀 Open T-Air Mini App:', {
     reply_markup: {
       inline_keyboard: [[
-        { text: '📱 Launch App', web_app: { url: 'https://frontend-q3dmnj8zt-pratamas-projects.vercel.app' }}
+        { text: '📱 Launch App', web_app: { url: 'https://frontend-1qwzkfje3-pratamas-projects.vercel.app' }}
       ]]
     }
   });
